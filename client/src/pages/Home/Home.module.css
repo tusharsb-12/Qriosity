@@ -1,0 +1,13 @@
+.heroSection {
+  background-color: green;
+  min-height: 100%;
+  padding: 10px 5%;
+}
+
+.heroText {
+  font-size: 40px;
+  text-align: center;
+  color: white;
+  font-weight: 500;
+  margin-top: 50px;
+}

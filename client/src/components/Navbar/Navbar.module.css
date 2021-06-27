@@ -1,0 +1,21 @@
+.navbar {
+  padding: 10px 2%;
+  min-width: max-content;
+}
+
+.brandName {
+  font-size: 30px;
+  text-decoration: none;
+  color: black;
+}
+
+.authButton {
+  font-size: 18px;
+  padding: 8px;
+  background-color: yellow;
+  border: none;
+  border-radius: 5px;
+  float: right;
+  text-decoration: none;
+  color: black;
+}

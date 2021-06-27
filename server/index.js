@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 
 import authRoutes from './api/auth.js';
+import quizRoutes from './api/quiz.js';
 
 dotenv.config();
 
@@ -30,6 +31,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.use('/api/auth', authRoutes);
+app.use('/api/quiz', quizRoutes);
 
 app.listen(PORT, () => {
   console.log(`Listening to port ${PORT}`);

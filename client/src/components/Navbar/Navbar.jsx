@@ -8,7 +8,7 @@ const Navbar = () => {
       <a href='/' className={classes.brandName}>
         Qriosity
       </a>
-      <a href='/' className={classes.authButton}>
+      <a href='/auth' className={classes.authButton}>
         Login / Register
       </a>
     </div>

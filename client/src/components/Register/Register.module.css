@@ -1,0 +1,38 @@
+.registerContainer {
+  width: 50%;
+  margin: auto;
+}
+
+.registerContainer input {
+  height: 40px;
+  width: 100%;
+  font-size: 15px;
+  margin-top: 20px;
+}
+
+.registerContainer button {
+  margin-top: 20px;
+  height: 40px;
+  width: 100%;
+  background-color: green;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+.registerContainer small {
+  margin-top: 10px;
+  float: right;
+}
+
+.redirect {
+  text-align: right;
+  margin-top: 20px;
+}
+
+@media screen and (max-width: 526px) {
+  .registerContainer {
+    width: 100%;
+  }
+}

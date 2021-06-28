@@ -1,0 +1,28 @@
+.quizContainer {
+  padding: 10px 5%;
+  text-align: center;
+}
+
+.quizContainer input {
+  height: 30px;
+  margin-top: 20px;
+  width: 80%;
+  font-size: 15px;
+}
+
+.quizContainer textarea {
+  margin-top: 20px;
+  width: 80%;
+  height: 100px;
+}
+
+.quizContainer button {
+  background-color: green;
+  margin-top: 20px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  height: 40px;
+  width: 80%;
+  font-size: 18px;
+}

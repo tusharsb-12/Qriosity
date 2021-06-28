@@ -2,6 +2,8 @@ import User from '../models/user.js';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
+import { registerValidator, loginValidator } from '../validators/auth.js';
+
 // Utility functions
 const loadUser = async (email) => {
   try {
@@ -18,7 +20,7 @@ const validateUser = async (email, password) => {
 
     return { matched, user };
   } catch (err) {
-    console.log(error);
+    console.log(err);
     return { matched: false, user: null };
   }
 };
@@ -42,6 +44,12 @@ const generateJwtToken = (user) => {
 
 // Login user
 export const login = async (req, res) => {
+  const { valid, errors } = loginValidator(req.body);
+
+  if (!valid) {
+    return res.status(400).json({ err: { ...errors } });
+  }
+
   try {
     const { email, password } = req.body;
     const { matched, user } = await validateUser(email, password);
@@ -68,6 +76,12 @@ export const login = async (req, res) => {
 
 // Register a new user
 export const register = async (req, res) => {
+  const { valid, errors } = registerValidator(req.body);
+
+  if (!valid) {
+    return res.status(400).json({ err: { ...errors } });
+  }
+
   try {
     const { firstName, lastName, email, password, confirmPassword } = req.body;
     let user = await loadUser(email);

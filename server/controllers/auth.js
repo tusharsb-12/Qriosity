@@ -96,8 +96,11 @@ export const register = async (req, res) => {
 
     const hash = await hashPassword(password);
     user = await User.create({ firstName, lastName, email, password: hash });
+    const token = generateJwtToken(user);
+
     return res.status(201).json({
       msg: 'User created',
+      token,
     });
   } catch (err) {
     console.log(err);

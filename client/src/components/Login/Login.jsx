@@ -1,4 +1,8 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import cn from 'classnames';
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from '../../redux/actions/auth';
 
 import classes from './Login.module.css';
 
@@ -7,6 +11,9 @@ const Login = () => {
     email: '',
     password: '',
   });
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const auth = useSelector((state) => state.authReducer);
 
   const onChange = (e) => {
     setFormData({
@@ -17,7 +24,7 @@ const Login = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
+    dispatch(login(formData, history));
   };
 
   return (
@@ -28,17 +35,18 @@ const Login = () => {
         name='email'
         placeholder='Email'
         onChange={onChange}
+        className={cn('', { [classes.error]: auth.email })}
       />
+      <span className={classes.errorText}>{auth.email}</span>
       <input
         type='password'
         name='password'
         placeholder='Password'
         onChange={onChange}
+        className={cn('', { [classes.error]: auth.password })}
       />
+      <span className={classes.errorText}>{auth.password}</span>
       <button onClick={onSubmit}>Login</button>
-      <div className={classes.redirect}>
-        <a href='/auth'>Don't have an account? Create one</a>
-      </div>
     </form>
   );
 };

@@ -26,9 +26,12 @@
   float: right;
 }
 
-.redirect {
-  text-align: right;
-  margin-top: 20px;
+.error {
+  border: 3px solid red;
+}
+
+.errorText {
+  color: red;
 }
 
 @media screen and (max-width: 526px) {

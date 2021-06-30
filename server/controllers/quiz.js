@@ -4,7 +4,7 @@ import Question from '../models/question.js';
 // Adding questions utility
 export const insertQuestions = async (questions) => {
   try {
-    console.log(questions);
+    // console.log(questions);
     const qs = await Question.insertMany(questions);
 
     let questionIds = [];
@@ -33,7 +33,7 @@ export const createQuiz = async (req, res) => {
   } = req.body;
   try {
     const questionIds = await insertQuestions(questions);
-    console.log(questionIds);
+    // console.log(questionIds);
     if (questionIds.length === 0) {
       return res.status(400).json({
         err: {

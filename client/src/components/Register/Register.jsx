@@ -16,7 +16,7 @@ const Register = () => {
   });
   const dispatch = useDispatch();
   const history = useHistory();
-  const auth = useSelector((state) => state.authReducer);
+  const auth = useSelector((state) => state.registerReducer);
 
   const onChange = (e) => {
     setFormData({

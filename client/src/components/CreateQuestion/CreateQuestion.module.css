@@ -1,0 +1,28 @@
+.answer {
+  width: 80%;
+  margin: auto;
+  text-align: left;
+  margin-top: 5px;
+}
+
+.answer input[type='checkbox'] {
+  height: 30px;
+  width: 30px;
+  vertical-align: middle;
+}
+
+.answer input[type='text'] {
+  height: 30px;
+  font-size: 15px;
+}
+
+.submitQuestionButton {
+  background-color: yellow !important;
+  color: black !important;
+}
+
+@media screen and (max-width: 526px) {
+  .answer {
+    width: 100%;
+  }
+}

@@ -9,7 +9,8 @@
   color: black;
 }
 
-.authButton {
+.authButton,
+.dropdownButton {
   font-size: 18px;
   padding: 8px;
   background-color: yellow;
@@ -18,4 +19,36 @@
   float: right;
   text-decoration: none;
   color: black;
+}
+
+.dropdown {
+  position: relative;
+  float: right;
+  z-index: 1;
+}
+
+.dropdownButton {
+  min-width: 160px;
+}
+
+.dropdownContent {
+  display: none;
+}
+
+.dropdownContent {
+  margin-top: 30px;
+  list-style-type: none;
+}
+
+.dropdownContent li {
+  margin: 15px 0px;
+}
+
+.dropdownContent a {
+  text-decoration: none;
+  color: black;
+}
+
+.dropdownButton:hover .dropdownContent {
+  display: block;
 }

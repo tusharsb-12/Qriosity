@@ -20,7 +20,7 @@ const validateUser = async (email, password) => {
 
     return { matched, user };
   } catch (err) {
-    console.log(err);
+    // console.log(err);
     return { matched: false, user: null };
   }
 };
@@ -65,7 +65,7 @@ export const login = async (req, res) => {
     const token = generateJwtToken(user);
     return res.status(200).json({ msg: 'Welcome back', token });
   } catch (err) {
-    console.log(err);
+    // console.log(err);
     return res.status(500).json({
       err: {
         msg: 'Server error',
@@ -103,7 +103,7 @@ export const register = async (req, res) => {
       token,
     });
   } catch (err) {
-    console.log(err);
+    // console.log(err);
     return res.status(500).json({
       err: {
         msg: 'Server error',

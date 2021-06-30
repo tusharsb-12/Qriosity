@@ -8,6 +8,12 @@ const quizSchema = new mongoose.Schema({
   description: {
     type: String,
     required: true,
+    default: 'No description provided',
+  },
+  instructions: {
+    type: String,
+    required: true,
+    default: 'No instructions provided',
   },
   timeLimit: {
     type: Number,

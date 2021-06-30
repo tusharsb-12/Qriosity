@@ -8,9 +8,18 @@ const questionSchema = new mongoose.Schema({
   answers: [
     {
       answerText: String,
-      isCorrect: true,
+      isCorrect: Boolean,
     },
   ],
+  marks: {
+    type: Number,
+    required: true,
+    default: 1,
+  },
+  negativePenalty: {
+    type: Number,
+    default: 0,
+  },
 });
 
 const Question = mongoose.model('Question', questionSchema);

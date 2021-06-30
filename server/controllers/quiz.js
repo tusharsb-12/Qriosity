@@ -1,22 +1,61 @@
 import Quiz from '../models/quiz.js';
+import Question from '../models/question.js';
+
+// Adding questions utility
+export const insertQuestions = async (questions) => {
+  try {
+    console.log(questions);
+    const qs = await Question.insertMany(questions);
+
+    let questionIds = [];
+    qs.map((question) => {
+      questionIds.push(question._id);
+    });
+
+    return questionIds;
+  } catch (err) {
+    console.log(err);
+    return [];
+  }
+};
 
 // Create a quiz
 export const createQuiz = async (req, res) => {
   const author = req.user._id;
-  const { title, description, timeLimit, startDateTime, endDateTime } =
-    req.body;
+  const {
+    title,
+    description,
+    instructions,
+    timeLimit,
+    startDateTime,
+    endDateTime,
+    questions,
+  } = req.body;
   try {
-    await Quiz.create({
-      title,
-      description,
-      timeLimit,
-      startDateTime,
-      endDateTime,
-      author,
-    });
-    return res.status(201).json({
-      msg: 'Quiz created',
-    });
+    const questionIds = await insertQuestions(questions);
+    console.log(questionIds);
+    if (questionIds.length === 0) {
+      return res.status(400).json({
+        err: {
+          msg: 'No questions are added. Cannot create the quiz',
+        },
+      });
+    } else {
+      const quiz = await Quiz.create({
+        title,
+        description,
+        instructions,
+        timeLimit,
+        startDateTime,
+        endDateTime,
+        author,
+        questions: questionIds,
+      });
+      return res.status(201).json({
+        msg: 'Quiz created',
+        id: quiz.id,
+      });
+    }
   } catch (err) {
     console.log(err);
     return res.status(500).json({
@@ -37,7 +76,7 @@ export const getQuiz = async (req, res) => {
       quiz,
     });
   } catch (err) {
-    console.log(err);
+    // console.log(err);
     return res.status(500).json({
       err: {
         msg: 'Server error',
@@ -62,7 +101,7 @@ export const deleteQuiz = async (req, res) => {
     await Quiz.findByIdAndDelete(quizId);
     return res.status(204).json({ msg: 'Quiz deleted' });
   } catch (err) {
-    console.log(err);
+    // console.log(err);
     return res.status(500).json({
       err: {
         msg: 'Server error',

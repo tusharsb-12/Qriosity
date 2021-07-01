@@ -1,11 +1,11 @@
 import express from 'express';
 import auth from '../middleware/auth.js';
-import { createQuiz, getQuiz, deleteQuiz } from '../controllers/quiz.js';
+import * as controllers from '../controllers/quiz.js';
 
 const router = express.Router();
 
-router.post('/create', auth, createQuiz);
-router.get('/:quizId', auth, getQuiz);
-router.delete('/:quizId', auth, deleteQuiz);
+router.post('/create', auth, controllers.createQuiz);
+router.get('/:quizId', auth, controllers.getQuiz);
+router.delete('/:quizId', auth, controllers.deleteQuiz);
 
 export default router;

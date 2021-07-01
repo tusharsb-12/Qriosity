@@ -70,10 +70,24 @@ export const createQuiz = async (req, res) => {
 export const getQuiz = async (req, res) => {
   const quizId = req.params.quizId;
   try {
-    const quiz = await Quiz.findById(quizId);
+    const {
+      instructions,
+      description,
+      author,
+      timeLimit,
+      startDateTime,
+      endDateTime,
+    } = await Quiz.findById(quizId);
     return res.status(200).json({
       msg: 'Quiz fetched',
-      quiz,
+      quiz: {
+        instructions,
+        description,
+        author,
+        timeLimit,
+        startDateTime,
+        endDateTime,
+      },
     });
   } catch (err) {
     // console.log(err);

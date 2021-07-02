@@ -71,6 +71,7 @@ export const getQuiz = async (req, res) => {
   const quizId = req.params.quizId;
   try {
     const {
+      title,
       instructions,
       description,
       author,
@@ -81,6 +82,7 @@ export const getQuiz = async (req, res) => {
     return res.status(200).json({
       msg: 'Quiz fetched',
       quiz: {
+        title,
         instructions,
         description,
         author,

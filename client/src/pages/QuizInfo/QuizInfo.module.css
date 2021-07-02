@@ -1,0 +1,19 @@
+.quizInfoContainer {
+  min-height: 90%;
+  padding: 10px 5%;
+  text-align: center;
+}
+
+.infoDiv {
+  margin: 30px 0px;
+  text-align: left;
+}
+
+.quizInfoContainer button {
+  font-size: 18px;
+  background-color: green;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+}

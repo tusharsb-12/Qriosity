@@ -21,10 +21,12 @@ const logout = () => API.get('/auth/logout');
 
 // Quiz
 const createQuiz = (formData) => API.post('/quiz/create', formData);
+const getQuizInfo = (quizId) => API.get(`/quiz/${quizId}`);
 
 module.exports = {
   register,
   login,
   logout,
   createQuiz,
+  getQuizInfo,
 };

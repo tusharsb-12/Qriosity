@@ -10,3 +10,5 @@ export const LOGOUT = 'LOGOUT';
 // Quiz
 export const CREATE_QUIZ_SUCCESS = 'CREATE_QUIZ_SUCCESS';
 export const CREATE_QUIZ_FAIL = 'CREATE_QUIZ_FAIL';
+export const GET_QUIZ_SUCCESS = 'GET_QUIZ_SUCCESS';
+export const GET_QUIZ_FAIL = 'GET_QUIZ_FAIL';

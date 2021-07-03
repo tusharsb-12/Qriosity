@@ -1,46 +1,6 @@
 import User from '../models/user.js';
-import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
 
 import { registerValidator, loginValidator } from '../validators/auth.js';
-
-// Utility functions
-const loadUser = async (email) => {
-  try {
-    return await User.findOne({ email });
-  } catch (err) {
-    return null;
-  }
-};
-
-const validateUser = async (email, password) => {
-  try {
-    const user = await loadUser(email);
-    const matched = await bcrypt.compare(password, user.password);
-
-    return { matched, user };
-  } catch (err) {
-    // console.log(err);
-    return { matched: false, user: null };
-  }
-};
-
-const hashPassword = async (password) => {
-  const salt = await bcrypt.genSalt(10);
-  return await bcrypt.hash(password, salt);
-};
-
-const generateJwtToken = (user) => {
-  return jwt.sign(
-    {
-      id: user._id,
-    },
-    process.env.JWT_SECRET,
-    {
-      expiresIn: process.env.JWT_EXPIRE,
-    }
-  );
-};
 
 // Login user
 export const login = async (req, res) => {
@@ -52,17 +12,28 @@ export const login = async (req, res) => {
 
   try {
     const { email, password } = req.body;
-    const { matched, user } = await validateUser(email, password);
+    const user = await User.findOne({ email });
 
-    if (!matched) {
+    if (!user) {
       return res.status(400).json({
         err: {
-          password: 'Please check your email and password',
+          msg: 'An account with the email does not exist',
         },
       });
     }
 
-    const token = generateJwtToken(user);
+    const matched = await user.comparePassword(password);
+
+    if (!matched) {
+      return res.status(400).json({
+        err: {
+          password:
+            'Invalid password. Please check your email and password again',
+        },
+      });
+    }
+
+    const token = user.generateToken();
     return res.status(200).json({ msg: 'Welcome back', token });
   } catch (err) {
     // console.log(err);
@@ -83,8 +54,8 @@ export const register = async (req, res) => {
   }
 
   try {
-    const { firstName, lastName, email, password, confirmPassword } = req.body;
-    let user = await loadUser(email);
+    const { firstName, lastName, email, password } = req.body;
+    let user = await User.findOne({ email });
 
     if (user) {
       return res.status(400).json({
@@ -94,9 +65,8 @@ export const register = async (req, res) => {
       });
     }
 
-    const hash = await hashPassword(password);
-    user = await User.create({ firstName, lastName, email, password: hash });
-    const token = generateJwtToken(user);
+    user = await User.create({ firstName, lastName, email, password });
+    const token = user.generateToken(user);
 
     return res.status(201).json({
       msg: 'User created',

@@ -8,6 +8,7 @@ import Footer from './components/Footer/Footer';
 import CreateQuiz from './pages/CreateQuiz/CreateQuiz';
 import Auth from './pages/Auth/Auth';
 import QuizInfo from './pages/QuizInfo/QuizInfo';
+import QuestionsPage from './pages/QuestionsPage/QuestionsPage';
 
 function App() {
   return (
@@ -18,7 +19,8 @@ function App() {
           <Route path='/' exact component={Home} />
           <Route path='/auth' exact component={Auth} />
           <Route path='/create-quiz' exact component={CreateQuiz} />
-          <Route path='/quiz/:quizId' component={QuizInfo} />
+          <Route path='/quiz/:quizId' exact component={QuizInfo} />
+          <Route path='/questions/:quizId' exact component={QuestionsPage} />
         </Switch>
       </Router>
       <Footer />

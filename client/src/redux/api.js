@@ -23,10 +23,14 @@ const logout = () => API.get('/auth/logout');
 const createQuiz = (formData) => API.post('/quiz/create', formData);
 const getQuizInfo = (quizId) => API.get(`/quiz/${quizId}`);
 
+// Questions
+const getQuestions = (quizId) => API.get(`/question/${quizId}`);
+
 module.exports = {
   register,
   login,
   logout,
   createQuiz,
   getQuizInfo,
+  getQuestions,
 };

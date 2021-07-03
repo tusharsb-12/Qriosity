@@ -1,0 +1,24 @@
+.questionCard {
+  margin: 20px 0px;
+  padding: 10px;
+  width: 100%;
+  border: 1px solid green;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+.questionText {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.options {
+  margin-bottom: 5px;
+}
+
+.options input[type='checkbox'] {
+  margin-right: 10px;
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+}

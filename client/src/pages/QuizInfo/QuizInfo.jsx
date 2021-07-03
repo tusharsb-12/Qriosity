@@ -6,9 +6,11 @@ import classes from './QuizInfo.module.css';
 
 const QuizInfo = ({ match }) => {
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getQuizInfo(match.params.quizId));
   }, []);
+
   const quizData = useSelector((state) => state.quizReducer.quiz);
 
   return (
@@ -17,12 +19,12 @@ const QuizInfo = ({ match }) => {
       <div className={classes.infoDiv}>
         <h2>Description</h2>
         <br />
-        <p>{quizData?.description}</p>
+        <pre>{quizData?.description}</pre>
       </div>
       <div className={classes.infoDiv}>
         <h2>Instructions</h2>
         <br />
-        <p>{quizData?.instructions}</p>
+        <pre>{quizData?.instructions}</pre>
       </div>
       <div className={classes.infoDiv}>
         <p>
@@ -34,7 +36,7 @@ const QuizInfo = ({ match }) => {
           <strong>Author: </strong>Tushar Bauskar
         </p>
       </div>
-      <button>Start Quiz</button>
+      <a href={`/questions/${match.params.quizId}`}>Start Quiz</a>
     </div>
   );
 };

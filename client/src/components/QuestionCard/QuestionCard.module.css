@@ -22,3 +22,14 @@
   height: 30px;
   vertical-align: middle;
 }
+
+.questionCard button {
+  background-color: green;
+  margin-top: 20px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  height: 40px;
+  font-size: 18px;
+  padding: 10px;
+}

@@ -2,22 +2,32 @@ import React from 'react';
 
 import classes from './QuestionCard.module.css';
 
-const QuestionCard = ({ question, number }) => {
+const QuestionCard = ({ question, handleNext, onChange, number }) => {
   return (
     <div className={classes.questionCard}>
-      <p>
-        <em>Question : {number}</em>
-      </p>
+      <div>
+        <span>
+          <em>Question: {number + 1}</em>
+        </span>
+        <span style={{ float: 'right' }}>
+          +{question.marks} -{question.negativePenalty}
+        </span>
+      </div>
       <br />
       <p className={classes.questionText}>{question?.questionText}</p>
-      {question.answers?.map((answer) => {
+      {question.answers?.map((answer, index) => {
         return (
-          <div className={classes.options}>
-            <input type='checkbox' />
+          <div className={classes.options} key={index + number * 10}>
+            <input
+              type='checkbox'
+              onChange={(e) => onChange(e, index)}
+              checked={answer.isSelected}
+            />
             <label>{answer.answerText}</label>
           </div>
         );
       })}
+      <button onClick={handleNext}>Next</button>
     </div>
   );
 };

@@ -34,7 +34,13 @@
   color: red;
 }
 
-@media screen and (max-width: 526px) {
+@media screen and (max-width: 768px) {
+  .loginContainer {
+    width: 75%;
+  }
+}
+
+@media screen and (max-width: 550px) {
   .loginContainer {
     width: 100%;
   }

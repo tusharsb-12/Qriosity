@@ -4,6 +4,7 @@ import { getQuestions } from '../../redux/actions/questions';
 import { submitQuizResponse } from '../../redux/actions/quiz';
 
 import QuestionCard from '../../components/QuestionCard/QuestionCard';
+import Loading from '../../components/Loading/Loading';
 
 import classes from './QuestionsPage.module.css';
 
@@ -47,25 +48,31 @@ const QuestionsPage = ({ match }) => {
   };
 
   return (
-    <div className={classes.questionPageContainer}>
-      <div className={classes.questionContainer}>
-        {questions ? (
-          <QuestionCard
-            question={questions[number]}
-            handleNext={nextQuestion}
-            handlePrev={prevQuestion}
-            onChange={onChange}
-            number={number}
-          />
-        ) : (
-          <></>
-        )}
-        <div></div>
-      </div>
-      <button onClick={submitQuiz} className={classes.submitButton}>
-        Submit quiz
-      </button>
-    </div>
+    <>
+      {questions ? (
+        <div className={classes.questionPageContainer}>
+          <div className={classes.questionContainer}>
+            {questions ? (
+              <QuestionCard
+                question={questions[number]}
+                handleNext={nextQuestion}
+                handlePrev={prevQuestion}
+                onChange={onChange}
+                number={number}
+              />
+            ) : (
+              <></>
+            )}
+            <div></div>
+          </div>
+          <button onClick={submitQuiz} className={classes.submitButton}>
+            Submit quiz
+          </button>
+        </div>
+      ) : (
+        <Loading />
+      )}
+    </>
   );
 };
 

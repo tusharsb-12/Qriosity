@@ -1,3 +1,4 @@
+import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import './App.css';
@@ -10,6 +11,8 @@ import Auth from './pages/Auth/Auth';
 import QuizInfo from './pages/QuizInfo/QuizInfo';
 import QuestionsPage from './pages/QuestionsPage/QuestionsPage';
 
+import PrivateRoute from './components/PrivateRoute';
+
 function App() {
   return (
     <div className='app'>
@@ -18,9 +21,13 @@ function App() {
         <Switch>
           <Route path='/' exact component={Home} />
           <Route path='/auth' exact component={Auth} />
-          <Route path='/create-quiz' exact component={CreateQuiz} />
-          <Route path='/quiz/:quizId' exact component={QuizInfo} />
-          <Route path='/questions/:quizId' exact component={QuestionsPage} />
+          <PrivateRoute path='/create-quiz' exact component={CreateQuiz} />
+          <PrivateRoute path='/quiz/:quizId' exact component={QuizInfo} />
+          <PrivateRoute
+            path='/questions/:quizId'
+            exact
+            component={QuestionsPage}
+          />
         </Switch>
       </Router>
       <Footer />

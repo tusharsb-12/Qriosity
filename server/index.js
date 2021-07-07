@@ -6,6 +6,7 @@ import cors from 'cors';
 import authRoutes from './api/auth.js';
 import quizRoutes from './api/quiz.js';
 import questionRoutes from './api/questions.js';
+import quizResponseRoutes from './api/quizResponse.js';
 
 dotenv.config();
 
@@ -34,6 +35,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api/auth', authRoutes);
 app.use('/api/quiz', quizRoutes);
 app.use('/api/question', questionRoutes);
+app.use('/api/response/', quizResponseRoutes);
 
 app.listen(PORT, () => {
   console.log(`Listening to port ${PORT}`);

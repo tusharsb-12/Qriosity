@@ -33,3 +33,8 @@
   font-size: 18px;
   padding: 10px;
 }
+
+.redButton {
+  background-color: red !important;
+  float: right;
+}

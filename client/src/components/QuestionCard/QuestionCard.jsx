@@ -2,7 +2,13 @@ import React from 'react';
 
 import classes from './QuestionCard.module.css';
 
-const QuestionCard = ({ question, handleNext, onChange, number }) => {
+const QuestionCard = ({
+  question,
+  handleNext,
+  handlePrev,
+  onChange,
+  number,
+}) => {
   return (
     <div className={classes.questionCard}>
       <div>
@@ -28,6 +34,9 @@ const QuestionCard = ({ question, handleNext, onChange, number }) => {
         );
       })}
       <button onClick={handleNext}>Next</button>
+      <button onClick={handlePrev} className={classes.redButton}>
+        Prev
+      </button>
     </div>
   );
 };

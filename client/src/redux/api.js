@@ -22,6 +22,8 @@ const logout = () => API.get('/auth/logout');
 // Quiz
 const createQuiz = (formData) => API.post('/quiz/create', formData);
 const getQuizInfo = (quizId) => API.get(`/quiz/${quizId}`);
+const saveResponse = (response) =>
+  API.post(`/response/save-response`, response);
 
 // Questions
 const getQuestions = (quizId) => API.get(`/question/${quizId}`);
@@ -33,4 +35,5 @@ module.exports = {
   createQuiz,
   getQuizInfo,
   getQuestions,
+  saveResponse,
 };

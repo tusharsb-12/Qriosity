@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getQuestions } from '../../redux/actions/questions';
+import { submitQuizResponse } from '../../redux/actions/quiz';
 
 import QuestionCard from '../../components/QuestionCard/QuestionCard';
 
@@ -8,14 +9,13 @@ import classes from './QuestionsPage.module.css';
 
 const QuestionsPage = ({ match }) => {
   const [number, setNumber] = useState(0);
+  const { questions, quizId } = useSelector((state) => state.questionReducer);
   const [response, setResponse] = useState([]);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getQuestions(match.params.quizId));
   }, []);
-
-  const { questions } = useSelector((state) => state.questionReducer);
 
   const onChange = (e, index) => {
     const values = [...questions];
@@ -25,7 +25,7 @@ const QuestionsPage = ({ match }) => {
     setResponse(values);
   };
 
-  const handleNext = (e) => {
+  const nextQuestion = (e) => {
     if (number === questions.length - 1) {
       setNumber(0);
     } else {
@@ -33,18 +33,38 @@ const QuestionsPage = ({ match }) => {
     }
   };
 
+  const prevQuestion = (e) => {
+    if (number === 0) {
+      setNumber((number) => questions.length - 1);
+    } else {
+      setNumber((number) => number - 1);
+    }
+  };
+
+  const submitQuiz = (e) => {
+    e.preventDefault();
+    dispatch(submitQuizResponse({ quizId, response }));
+  };
+
   return (
     <div className={classes.questionPageContainer}>
-      {questions ? (
-        <QuestionCard
-          question={questions[number]}
-          handleNext={handleNext}
-          onChange={onChange}
-          number={number}
-        />
-      ) : (
-        <></>
-      )}
+      <div className={classes.questionContainer}>
+        {questions ? (
+          <QuestionCard
+            question={questions[number]}
+            handleNext={nextQuestion}
+            handlePrev={prevQuestion}
+            onChange={onChange}
+            number={number}
+          />
+        ) : (
+          <></>
+        )}
+        <div></div>
+      </div>
+      <button onClick={submitQuiz} className={classes.submitButton}>
+        Submit quiz
+      </button>
     </div>
   );
 };

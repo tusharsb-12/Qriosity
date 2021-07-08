@@ -25,6 +25,10 @@ const Login = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     dispatch(login(formData, history));
+
+    if (auth.msg) {
+      window.alert(auth.msg);
+    }
   };
 
   return (

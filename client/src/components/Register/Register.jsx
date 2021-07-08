@@ -28,6 +28,10 @@ const Register = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     dispatch(register(formData, history));
+
+    if (auth.msg) {
+      window.alert(auth.msg);
+    }
   };
 
   return (

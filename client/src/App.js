@@ -12,6 +12,7 @@ import QuizInfo from './pages/QuizInfo/QuizInfo';
 import QuestionsPage from './pages/QuestionsPage/QuestionsPage';
 
 import PrivateRoute from './components/PrivateRoute';
+import Dashboard from './pages/Dashboard/Dashboard';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
             exact
             component={QuestionsPage}
           />
+          <PrivateRoute path='/dashboard' exact component={Dashboard} />
         </Switch>
       </Router>
       <Footer />

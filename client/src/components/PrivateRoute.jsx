@@ -1,12 +1,6 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-
-const isLogin = () => {
-  if (localStorage.getItem('userToken')) {
-    return true;
-  }
-  return false;
-};
+import { isLogin } from '../utils/common';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   return (

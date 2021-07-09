@@ -1,0 +1,37 @@
+.cardContainer {
+  width: 90%;
+  min-height: 50px;
+  margin-top: 20px;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 5px;
+  margin: auto;
+}
+
+.cardContainer p {
+  margin-bottom: 10px;
+}
+
+.cardContainer pre {
+  margin-bottom: 10px;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+
+.cardContainer .quizName {
+  font-size: 30px;
+}
+
+.cardContainer button {
+  width: 100%;
+  height: 40px;
+  border: none;
+  background-color: green;
+  border-radius: 5px;
+  font-size: 18px;
+  color: white;
+}

@@ -1,8 +1,8 @@
 const axios = require('axios');
 
 const API = axios.create({
-  baseURL: 'https://qriosity-server.herokuapp.com/api/',
-  // baseURL: 'http://localhost:5000/api',
+  // baseURL: 'https://qriosity-server.herokuapp.com/api/',
+  baseURL: 'http://localhost:5000/api',
 });
 
 API.interceptors.request.use((req) => {
@@ -24,6 +24,7 @@ const createQuiz = (formData) => API.post('/quiz/create', formData);
 const getQuizInfo = (quizId) => API.get(`/quiz/${quizId}`);
 const saveResponse = (response) =>
   API.post(`/response/save-response`, response);
+const getAllQuizzes = () => API.get('/quiz/active-quizzes');
 
 // Questions
 const getQuestions = (quizId) => API.get(`/question/${quizId}`);
@@ -33,6 +34,7 @@ module.exports = {
   login,
   logout,
   createQuiz,
+  getAllQuizzes,
   getQuizInfo,
   getQuestions,
   saveResponse,

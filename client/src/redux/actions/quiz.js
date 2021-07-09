@@ -8,6 +8,7 @@ import {
   QUIZ_SUBMIT_FAIL,
 } from '../constants';
 
+// Create quiz
 export const createQuiz = (formData) => async (dispatch) => {
   try {
     const { data } = await api.createQuiz(formData);
@@ -18,6 +19,18 @@ export const createQuiz = (formData) => async (dispatch) => {
   }
 };
 
+// Get all quizzes
+export const getAllQuizzes = () => async (dispatch) => {
+  try {
+    const { data } = await api.getAllQuizzes();
+    dispatch({ type: GET_QUIZ_SUCCESS, payload: data });
+  } catch (err) {
+    const { data } = err.response;
+    dispatch({ type: GET_QUIZ_FAIL, payload: data });
+  }
+};
+
+// Get info about a quiz
 export const getQuizInfo = (quizId) => async (dispatch) => {
   try {
     const { data } = await api.getQuizInfo(quizId);
@@ -28,6 +41,7 @@ export const getQuizInfo = (quizId) => async (dispatch) => {
   }
 };
 
+// Submit quiz response
 export const submitQuizResponse = (response) => async (dispatch) => {
   try {
     const { data } = await api.saveResponse(response);

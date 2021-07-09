@@ -125,3 +125,35 @@ export const deleteQuiz = async (req, res) => {
     });
   }
 };
+
+// Get quizzes created by the user
+export const getCreatedQuiz = async (req, res) => {
+  const userId = req.user.id;
+  try {
+    const userQuizzes = await Quiz.find({ author: userId });
+    return res.status(200).json({
+      quizzes: userQuizzes,
+    });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({
+      err: {
+        msg: 'Server error',
+      },
+    });
+  }
+};
+
+export const getActiveQuizzes = async (req, res) => {
+  try {
+    const quizzes = await Quiz.find();
+    return res.status(200).json({ quizzes });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({
+      err: {
+        msg: 'Server error',
+      },
+    });
+  }
+};

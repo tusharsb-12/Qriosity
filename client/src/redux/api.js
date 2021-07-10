@@ -1,8 +1,8 @@
 const axios = require('axios');
 
 const API = axios.create({
-  // baseURL: 'https://qriosity-server.herokuapp.com/api/',
-  baseURL: 'http://localhost:5000/api',
+  baseURL: 'https://qriosity-server.herokuapp.com/api/',
+  // baseURL: 'http://localhost:5000/api',
 });
 
 API.interceptors.request.use((req) => {

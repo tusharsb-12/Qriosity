@@ -13,6 +13,7 @@ import QuestionsPage from './pages/QuestionsPage/QuestionsPage';
 
 import PrivateRoute from './components/PrivateRoute';
 import Dashboard from './pages/Dashboard/Dashboard';
+import ScorePage from './pages/ScorePage/ScorePage';
 
 function App() {
   return (
@@ -21,15 +22,18 @@ function App() {
       <Router>
         <Switch>
           <Route path='/' exact component={Home} />
-          <Route path='/auth' exact component={Auth} />
-          <PrivateRoute path='/create-quiz' exact component={CreateQuiz} />
-          <PrivateRoute path='/quiz/:quizId' exact component={QuizInfo} />
-          <PrivateRoute
-            path='/questions/:quizId'
-            exact
-            component={QuestionsPage}
-          />
-          <PrivateRoute path='/dashboard' exact component={Dashboard} />
+          <div className='main-content'>
+            <Route path='/auth' exact component={Auth} />
+            <PrivateRoute path='/create-quiz' exact component={CreateQuiz} />
+            <PrivateRoute path='/quiz/:quizId' exact component={QuizInfo} />
+            <PrivateRoute
+              path='/questions/:quizId'
+              exact
+              component={QuestionsPage}
+            />
+            <PrivateRoute path='/dashboard' exact component={Dashboard} />
+            <PrivateRoute path='/score' exact component={ScorePage} />
+          </div>
         </Switch>
       </Router>
       <Footer />

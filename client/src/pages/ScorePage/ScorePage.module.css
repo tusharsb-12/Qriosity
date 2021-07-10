@@ -1,0 +1,33 @@
+.scoreContainer {
+  margin-top: 10%;
+  text-align: center;
+}
+
+.scoreContainer h1 {
+  font-size: 50px;
+  font-weight: 500;
+}
+
+.scoreBox {
+  padding: 30px;
+  margin: 30px auto;
+  background-color: green;
+  border-radius: 5px;
+  display: table;
+}
+
+.scoreBox p {
+  font-size: 100px;
+  color: white;
+  font-weight: 300;
+}
+
+.scoreContainer a {
+  margin-top: 20px;
+  text-decoration: none;
+  padding: 10px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  background-color: yellow;
+}

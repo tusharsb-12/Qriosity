@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import CreateQuestion from '../../components/CreateQuestion/CreateQuestion';
 import { createQuiz } from '../../redux/actions/quiz';
 
@@ -16,6 +17,8 @@ const CreateQuiz = () => {
     questions: [],
   });
   const dispatch = useDispatch();
+  const history = useHistory();
+  const quizData = useSelector((state) => state.quizReducer);
 
   const onChange = (e) => {
     setFormData({
@@ -44,7 +47,11 @@ const CreateQuiz = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    dispatch(createQuiz(formData));
+    dispatch(createQuiz(formData, history));
+
+    if (quizData.err?.msg) {
+      window.alert(quizData.err.msg);
+    }
   };
 
   return (

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getQuestions } from '../../redux/actions/questions';
 import { submitQuizResponse } from '../../redux/actions/quiz';
@@ -13,6 +14,7 @@ const QuestionsPage = ({ match }) => {
   const { questions, quizId } = useSelector((state) => state.questionReducer);
   const [response, setResponse] = useState([]);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   useEffect(() => {
     dispatch(getQuestions(match.params.quizId));
@@ -44,13 +46,13 @@ const QuestionsPage = ({ match }) => {
 
   const submitQuiz = (e) => {
     e.preventDefault();
-    dispatch(submitQuizResponse({ quizId, response }));
+    dispatch(submitQuizResponse({ quizId, response }, history));
   };
 
   return (
     <>
       {questions ? (
-        <div className={classes.questionPageContainer}>
+        <div>
           <div className={classes.questionContainer}>
             {questions ? (
               <QuestionCard

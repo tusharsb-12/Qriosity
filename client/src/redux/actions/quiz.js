@@ -7,12 +7,14 @@ import {
   QUIZ_SUBMIT_SUCCESS,
   QUIZ_SUBMIT_FAIL,
 } from '../constants';
+import calculateScore from '../../utils/score';
 
 // Create quiz
-export const createQuiz = (formData) => async (dispatch) => {
+export const createQuiz = (formData, history) => async (dispatch) => {
   try {
     const { data } = await api.createQuiz(formData);
     dispatch({ type: CREATE_QUIZ_SUCCESS, payload: data });
+    history.push('/dashboard');
   } catch (err) {
     const { data } = err.response;
     dispatch({ type: CREATE_QUIZ_FAIL, payload: data });
@@ -42,12 +44,17 @@ export const getQuizInfo = (quizId) => async (dispatch) => {
 };
 
 // Submit quiz response
-export const submitQuizResponse = (response) => async (dispatch) => {
-  try {
-    const { data } = await api.saveResponse(response);
-    dispatch({ type: QUIZ_SUBMIT_SUCCESS, payload: data });
-  } catch (err) {
-    const { data } = err.response;
-    dispatch({ type: QUIZ_SUBMIT_FAIL, payload: data });
-  }
-};
+export const submitQuizResponse =
+  (quizResponse, history) => async (dispatch) => {
+    try {
+      // Calculate score
+      const { response } = quizResponse;
+      const score = calculateScore(response);
+      const { data } = await api.saveResponse({ ...quizResponse, score });
+      dispatch({ type: QUIZ_SUBMIT_SUCCESS, payload: data });
+      history.push('/score');
+    } catch (err) {
+      const { data } = err.response;
+      dispatch({ type: QUIZ_SUBMIT_FAIL, payload: data });
+    }
+  };

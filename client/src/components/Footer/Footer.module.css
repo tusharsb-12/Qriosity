@@ -1,6 +1,8 @@
 .footer {
   text-align: center;
   padding: 20px 0px;
+  background-color: green;
+  color: white;
 }
 
 .footerMain {

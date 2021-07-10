@@ -1,6 +1,4 @@
 .quizInfoContainer {
-  min-height: 90%;
-  padding: 10px 5%;
   text-align: center;
 }
 
@@ -17,4 +15,5 @@
   padding: 10px;
   border-radius: 5px;
   text-decoration: none;
+  margin-bottom: 30px;
 }

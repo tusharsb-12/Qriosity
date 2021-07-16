@@ -24,7 +24,10 @@ const createQuiz = (formData) => API.post('/quiz/create', formData);
 const getQuizInfo = (quizId) => API.get(`/quiz/${quizId}`);
 const saveResponse = (response) =>
   API.post(`/response/save-response`, response);
+const getResponse = (quizId) => API.get(`/response/get-response/${quizId}`);
 const getAllQuizzes = () => API.get('/quiz/active-quizzes');
+const getCreatedQuizzes = () => API.get('/quiz/created-quizzes');
+const getAttemptedQuizzes = () => API.get('/quiz/attempted-quizzes');
 
 // Questions
 const getQuestions = (quizId) => API.get(`/question/${quizId}`);
@@ -35,7 +38,10 @@ module.exports = {
   logout,
   createQuiz,
   getAllQuizzes,
+  getCreatedQuizzes,
+  getAttemptedQuizzes,
   getQuizInfo,
   getQuestions,
   saveResponse,
+  getResponse,
 };

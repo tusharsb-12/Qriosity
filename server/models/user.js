@@ -30,8 +30,9 @@ const userSchema = new mongoose.Schema({
     {
       quiz: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'quizHistory',
+        ref: 'quiz',
       },
+      title: String,
       score: Number,
     },
   ],

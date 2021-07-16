@@ -1,5 +1,6 @@
 import Quiz from '../models/quiz.js';
 import Question from '../models/question.js';
+import User from '../models/user.js';
 
 // Adding questions utility
 export const insertQuestions = async (questions) => {
@@ -144,10 +145,27 @@ export const getCreatedQuiz = async (req, res) => {
   }
 };
 
+// Get active quizzes
 export const getActiveQuizzes = async (req, res) => {
   try {
     const quizzes = await Quiz.find();
     return res.status(200).json({ quizzes });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({
+      err: {
+        msg: 'Server error',
+      },
+    });
+  }
+};
+
+// Get attempted quizzes
+export const getAttemptedQuizzes = async (req, res) => {
+  const userId = req.user._id;
+  try {
+    const { attemptedQuiz } = await User.findById(userId);
+    return res.status(200).json({ quizzes: attemptedQuiz });
   } catch (err) {
     console.log(err);
     return res.status(500).json({

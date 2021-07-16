@@ -14,6 +14,10 @@ const AuthButton = () => {
 const Dropdown = () => {
   const links = [
     { href: '/dashboard', label: 'Dashboard' },
+    { href: '/upcoming', label: 'Upcoming' },
+    { href: '/attempted', label: 'Attempted' },
+    { href: '/created', label: 'Created' },
+    { href: '/statistics', label: 'Statistics' },
     { href: '/create-quiz', label: 'Create quiz' },
     { href: '/take-quiz', label: 'Take quiz' },
     { href: '/account', label: 'Account' },

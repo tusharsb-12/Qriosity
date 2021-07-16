@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import './App.css';
@@ -14,6 +14,7 @@ import QuestionsPage from './pages/QuestionsPage/QuestionsPage';
 import PrivateRoute from './components/PrivateRoute';
 import Dashboard from './pages/Dashboard/Dashboard';
 import ScorePage from './pages/ScorePage/ScorePage';
+import QuizResponse from './pages/QuizResponse/QuizResponse';
 
 function App() {
   return (
@@ -22,18 +23,28 @@ function App() {
       <Router>
         <Switch>
           <Route path='/' exact component={Home} />
-          <div className='main-content'>
-            <Route path='/auth' exact component={Auth} />
-            <PrivateRoute path='/create-quiz' exact component={CreateQuiz} />
-            <PrivateRoute path='/quiz/:quizId' exact component={QuizInfo} />
-            <PrivateRoute
-              path='/questions/:quizId'
-              exact
-              component={QuestionsPage}
-            />
-            <PrivateRoute path='/dashboard' exact component={Dashboard} />
-            <PrivateRoute path='/score' exact component={ScorePage} />
-          </div>
+          <Fragment>
+            <div className='main-content'>
+              <Route path='/auth' exact component={Auth} />
+              <PrivateRoute path='/create-quiz' exact component={CreateQuiz} />
+              <PrivateRoute path='/quiz/:quizId' exact component={QuizInfo} />
+              <PrivateRoute
+                path='/questions/:quizId'
+                exact
+                component={QuestionsPage}
+              />
+              <PrivateRoute path='/dashboard' exact component={Dashboard} />
+              <PrivateRoute path='/attempted' exact component={Dashboard} />
+              <PrivateRoute path='/created' exact component={Dashboard} />
+              <PrivateRoute path='/statistics' exact component={Dashboard} />
+              <PrivateRoute
+                path='/quiz-response/:quizId'
+                exact
+                component={QuizResponse}
+              />
+              <PrivateRoute path='/score' exact component={ScorePage} />
+            </div>
+          </Fragment>
         </Switch>
       </Router>
       <Footer />

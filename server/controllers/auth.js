@@ -86,3 +86,20 @@ export const register = async (req, res) => {
 export const logout = (req, res) => {
   return res.status(200).json({ msg: 'Logged out' });
 };
+
+// Get user
+export const getUser = async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id);
+    return res.status(200).json({
+      user,
+    });
+  } catch (err) {
+    // console.log(err);
+    return res.status(500).json({
+      err: {
+        msg: 'Server error',
+      },
+    });
+  }
+};

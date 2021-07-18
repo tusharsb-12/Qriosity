@@ -31,6 +31,7 @@ export const createQuiz = async (req, res) => {
     startDateTime,
     endDateTime,
     questions,
+    totalMarks,
   } = req.body;
   try {
     const questionIds = await insertQuestions(questions);
@@ -51,14 +52,20 @@ export const createQuiz = async (req, res) => {
         endDateTime,
         author,
         questions: questionIds,
+        totalMarks,
       });
+
+      const user = await User.findById(author);
+      user.createdQuiz.push(quiz._id);
+      user.save();
+
       return res.status(201).json({
         msg: 'Quiz created',
         id: quiz.id,
       });
     }
   } catch (err) {
-    console.log(err);
+    // console.log(err);
     return res.status(500).json({
       err: {
         msg: 'Server error',
@@ -79,6 +86,7 @@ export const getQuiz = async (req, res) => {
       timeLimit,
       startDateTime,
       endDateTime,
+      totalMarks,
     } = await Quiz.findById(quizId);
     return res.status(200).json({
       msg: 'Quiz fetched',
@@ -90,6 +98,7 @@ export const getQuiz = async (req, res) => {
         timeLimit,
         startDateTime,
         endDateTime,
+        totalMarks,
       },
     });
   } catch (err) {

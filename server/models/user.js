@@ -34,6 +34,7 @@ const userSchema = new mongoose.Schema({
       },
       title: String,
       score: Number,
+      totalMarks: Number,
     },
   ],
 });

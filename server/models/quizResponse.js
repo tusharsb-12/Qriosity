@@ -24,6 +24,7 @@ const quizResponseSchema = new mongoose.Schema({
     },
   ],
   score: Number,
+  totalMarks: Number,
 });
 
 const QuizResponse = mongoose.model('quizResponse', quizResponseSchema);

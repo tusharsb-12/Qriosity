@@ -5,7 +5,7 @@ import Question from '../models/question.js';
 export const getQuestions = async (req, res) => {
   const quizId = req.params.quizId;
   try {
-    let { questions } = await Quiz.findById(quizId);
+    let { questions, timeLimit } = await Quiz.findById(quizId);
     questions = await Question.find({
       _id: questions,
     });
@@ -13,6 +13,7 @@ export const getQuestions = async (req, res) => {
     return res.status(200).json({
       quizId: quizId,
       questions,
+      timeLimit,
     });
   } catch (err) {
     console.log(err);

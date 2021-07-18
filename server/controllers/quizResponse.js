@@ -8,21 +8,25 @@ export const addQuizResponse = async (req, res) => {
   const userId = req.user._id;
 
   try {
+    const { title, totalMarks } = await Quiz.findById(quizId);
+    console.log(title, totalMarks);
+
     await QuizResponse.create({
       quizId,
       response,
       user: userId,
       score,
+      totalMarks,
     });
 
     const user = await User.findById(userId);
-    const { title } = await Quiz.findById(quizId);
-    user.attemptedQuiz.push({ quiz: quizId, title, score });
+    user.attemptedQuiz.push({ quiz: quizId, title, score, totalMarks });
     user.save();
 
     return res.status(201).json({
       msg: 'Quiz submitted. You can now view your score',
       score,
+      totalMarks,
     });
   } catch (err) {
     return res.status(500).json({

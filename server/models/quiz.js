@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import Question from './question.js';
 
 const quizSchema = new mongoose.Schema({
   title: {
@@ -37,6 +38,10 @@ const quizSchema = new mongoose.Schema({
       ref: 'Question',
     },
   ],
+  totalMarks: {
+    type: Number,
+    required: true,
+  },
 });
 
 const Quiz = mongoose.model('quiz', quizSchema);

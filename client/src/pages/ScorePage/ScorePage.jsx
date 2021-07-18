@@ -10,7 +10,11 @@ const ScorePage = () => {
     <div className={classes.scoreContainer}>
       <h1>Your score is</h1>
       <div className={classes.scoreBox}>
-        <p>{quizData.score === null ? 0 : quizData.score}</p>
+        <p>
+          {quizData.score === null
+            ? 0
+            : `${quizData.score} / ${quizData.totalMarks}`}
+        </p>
       </div>
       <a href='/dashboard'>Go to dashboard {'>'}</a>
     </div>

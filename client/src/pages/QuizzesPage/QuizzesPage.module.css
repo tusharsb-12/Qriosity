@@ -1,0 +1,23 @@
+.mainContainer {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 25%);
+}
+
+@media screen and (max-width: 992px) {
+  .mainContainer {
+    grid-template-columns: repeat(3, 33%);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .mainContainer {
+    grid-template-columns: repeat(2, 50%);
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .mainContainer {
+    grid-template-columns: repeat(1, 100%);
+  }
+}

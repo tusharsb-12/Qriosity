@@ -10,11 +10,11 @@ import CreateQuiz from './pages/CreateQuiz/CreateQuiz';
 import Auth from './pages/Auth/Auth';
 import QuizInfo from './pages/QuizInfo/QuizInfo';
 import QuestionsPage from './pages/QuestionsPage/QuestionsPage';
-
 import PrivateRoute from './components/PrivateRoute';
 import Dashboard from './pages/Dashboard/Dashboard';
 import ScorePage from './pages/ScorePage/ScorePage';
 import QuizResponse from './pages/QuizResponse/QuizResponse';
+import QuizzesPage from './pages/QuizzesPage/QuizzesPage';
 
 function App() {
   return (
@@ -34,9 +34,10 @@ function App() {
                 component={QuestionsPage}
               />
               <PrivateRoute path='/dashboard' exact component={Dashboard} />
-              <PrivateRoute path='/attempted' exact component={Dashboard} />
-              <PrivateRoute path='/created' exact component={Dashboard} />
-              <PrivateRoute path='/statistics' exact component={Dashboard} />
+              <PrivateRoute path='/upcoming' exact component={QuizzesPage} />
+              <PrivateRoute path='/attempted' exact component={QuizzesPage} />
+              <PrivateRoute path='/created' exact component={QuizzesPage} />
+              {/* <PrivateRoute path='/statistics' exact component={QuizzesPage} /> */}
               <PrivateRoute
                 path='/quiz-response/:quizId'
                 exact

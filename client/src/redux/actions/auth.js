@@ -4,6 +4,8 @@ import {
   REGISTER_FAIL,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
+  GET_USER_SUCCESS,
+  GET_USER_FAIL,
 } from '../constants';
 
 export const register = (formData, history) => async (dispatch) => {
@@ -25,5 +27,15 @@ export const login = (formData, history) => async (dispatch) => {
   } catch (err) {
     const { data } = err.response;
     dispatch({ type: LOGIN_FAIL, payload: data });
+  }
+};
+
+export const getUser = () => async (dispatch) => {
+  try {
+    const { data } = await api.getUser();
+    dispatch({ type: GET_USER_SUCCESS, payload: data });
+  } catch (err) {
+    const { data } = err.response;
+    dispatch({ type: GET_USER_FAIL, payload: data });
   }
 };

@@ -8,15 +8,15 @@ const ResponseCard = ({ res }) => {
     <div className={classes.responseCard}>
       <p className={classes.questionText}>{res.questionText}</p>
       {res.answers.map(({ answerText, isCorrect, isSelected }, index) => (
-        <div key={index}>
-          <p
-            className={cn('', {
-              [classes.correct]: isCorrect,
-              [classes.selected]: isSelected,
-            })}
-          >
-            {answerText}
-          </p>
+        <div
+          key={index}
+          className={cn(classes.responses, {
+            [classes.correct]: isCorrect,
+            [classes.wrong]: !isCorrect && isSelected,
+          })}
+        >
+          <input type='checkbox' checked={isSelected} />
+          <label>{answerText}</label>
         </div>
       ))}
     </div>

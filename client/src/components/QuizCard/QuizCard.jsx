@@ -29,11 +29,6 @@ const QuizCard = ({ quiz, type }) => {
             <em>Time limit: </em>
             {quiz.timeLimit} minutes
             <br />
-            <em>Start: </em>
-            {'12 June'}
-            <br />
-            <em>End: </em>
-            {'12 June'}
           </p>
           <button onClick={redirect}>Take quiz</button>
         </>

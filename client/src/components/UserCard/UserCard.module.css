@@ -1,0 +1,45 @@
+.cardContainer {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.quizStatsInfo {
+  background-color: rgba(0, 128, 0, 0.856);
+  border-radius: 0px 5px 5px 0px;
+  text-align: center;
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.quizStatsInfo div {
+  margin-top: 10px;
+  font-size: 20px;
+  color: white;
+}
+
+.userInfo {
+  border-right: 1px solid black;
+}
+
+.cardContainer h1 {
+  font-size: 40px;
+  font-weight: 400;
+  margin-bottom: 30px;
+}
+
+@media screen and (max-width: 992px) {
+  .cardContainer {
+    grid-template-columns: 100%;
+  }
+
+  .cardContainer div {
+    margin-bottom: 10px;
+  }
+
+  .userInfo {
+    border: none;
+  }
+}

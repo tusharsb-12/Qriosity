@@ -1,3 +1,8 @@
+.createQuestionCard {
+  margin-top: 20px;
+  border-top: 20px solid green;
+}
+
 .answer {
   width: 80%;
   margin: auto;
@@ -12,14 +17,26 @@
   vertical-align: middle;
 }
 
+.marksInput {
+  margin-top: 20px;
+}
+
+.marksInput input[type='number'] {
+  height: 40px;
+  font-size: 15px;
+  margin: 0px 10px;
+}
+
 .answer input[type='text'] {
   height: 30px;
   font-size: 15px;
+  width: fit-content;
 }
 
 .submitQuestionButton {
   background-color: yellow !important;
   color: black !important;
+  margin-bottom: 20px;
 }
 
 @media screen and (max-width: 526px) {

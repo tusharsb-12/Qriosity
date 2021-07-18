@@ -7,13 +7,29 @@
 }
 
 .questionText {
-  font-size: 20px;
-  font-weight: 500;
+  font-size: 25px;
+  font-weight: 400;
   color: green;
+  margin-bottom: 20px;
+}
+
+.responses {
+  padding: 10px 0px;
+  font-size: 20px;
+  border-radius: 5px;
+}
+
+.responses input[type='checkbox'] {
+  height: 20px;
+  width: 20px;
+  margin: 0px 5px;
+  vertical-align: middle;
 }
 
 .correct {
+  background-color: rgba(0, 128, 0, 0.363);
 }
 
-.selected {
+.wrong {
+  background-color: rgba(255, 0, 0, 0.363);
 }

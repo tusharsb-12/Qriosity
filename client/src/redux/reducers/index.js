@@ -4,6 +4,7 @@ import loginReducer from './login';
 import quizReducer from './quiz';
 import questionReducer from './questions';
 import quizResponseReducer from './quizResponse';
+import userReducer from './user';
 
 export default combineReducers({
   registerReducer,
@@ -11,4 +12,5 @@ export default combineReducers({
   quizReducer,
   questionReducer,
   quizResponseReducer,
+  userReducer,
 });

@@ -17,6 +17,7 @@ API.interceptors.request.use((req) => {
 // Auth
 const register = (formData) => API.post('/auth/register', formData);
 const login = (formData) => API.post('/auth/login', formData);
+const getUser = () => API.get('/auth/user');
 const logout = () => API.get('/auth/logout');
 
 // Quiz
@@ -35,6 +36,7 @@ const getQuestions = (quizId) => API.get(`/question/${quizId}`);
 module.exports = {
   register,
   login,
+  getUser,
   logout,
   createQuiz,
   getAllQuizzes,

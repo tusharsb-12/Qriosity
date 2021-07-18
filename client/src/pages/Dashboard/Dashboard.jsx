@@ -1,49 +1,28 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  getAllQuizzes,
-  getCreatedQuiz,
-  getAttemptedQuiz,
-} from '../../redux/actions/quiz';
+import { getUser } from '../../redux/actions/auth';
 
-import classes from './Dashboard.module.css';
-
-import QuizCard from '../../components/QuizCard/QuizCard';
+import UserCard from '../../components/UserCard/UserCard';
 import Loading from '../../components/Loading/Loading';
 
-const Dashboard = ({ match }) => {
+const Dashboard = () => {
   const dispatch = useDispatch();
-  const { quizzes } = useSelector((state) => state.quizReducer);
-
+  const userData = useSelector((state) => state.userReducer.user);
   useEffect(() => {
-    switch (match.url) {
-      case '/dashboard':
-        dispatch(getAllQuizzes());
-        break;
-      case '/created':
-        dispatch(getCreatedQuiz());
-        break;
-      case '/attempted':
-        dispatch(getAttemptedQuiz());
-        break;
-      default:
-        break;
-    }
-    // dispatch(getAllQuizzes());
+    dispatch(getUser());
   }, []);
 
   return (
     <>
-      {quizzes ? (
-        <div className={classes.mainContainer}>
-          {quizzes?.map((quiz, index) => (
-            <QuizCard
-              quiz={quiz}
-              key={index}
-              quizId={quiz._id}
-              type={match.url}
-            />
-          ))}
+      {userData ? (
+        <div>
+          <UserCard
+            firstName={userData.firstName}
+            lastName={userData.lastName}
+            email={userData.email}
+            attempted={userData.attemptedQuiz.length}
+            created={userData.createdQuiz.length}
+          />
         </div>
       ) : (
         <Loading />

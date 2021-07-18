@@ -14,7 +14,12 @@ import calculateScore from '../../utils/score';
 // Create quiz
 export const createQuiz = (formData, history) => async (dispatch) => {
   try {
-    const { data } = await api.createQuiz(formData);
+    console.log(formData);
+    let total = 0;
+    for (let i = 0; i < formData.questions.length; i++) {
+      total = total + parseInt(formData.questions[i].marks);
+    }
+    const { data } = await api.createQuiz({ ...formData, totalMarks: total });
     dispatch({ type: CREATE_QUIZ_SUCCESS, payload: data });
     history.push('/dashboard');
   } catch (err) {

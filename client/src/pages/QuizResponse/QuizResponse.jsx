@@ -20,7 +20,9 @@ const QuizResponse = ({ match }) => {
     <>
       {quizResponse ? (
         <div>
-          <h1 className={classes.score}>Your score: {quizResponse?.score}</h1>
+          <h1 className={classes.score}>
+            Your score: {`${quizResponse?.score} / ${quizResponse?.totalMarks}`}
+          </h1>
           {quizResponse?.response.map((res, index) => (
             <ResponseCard res={res} key={index} />
           ))}

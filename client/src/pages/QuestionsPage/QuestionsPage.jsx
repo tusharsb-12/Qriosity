@@ -6,12 +6,15 @@ import { submitQuizResponse } from '../../redux/actions/quiz';
 
 import QuestionCard from '../../components/QuestionCard/QuestionCard';
 import Loading from '../../components/Loading/Loading';
+import Timer from '../../components/Timer/Timer';
 
 import classes from './QuestionsPage.module.css';
 
 const QuestionsPage = ({ match }) => {
   const [number, setNumber] = useState(0);
-  const { questions, quizId } = useSelector((state) => state.questionReducer);
+  const { questions, quizId, timeLimit } = useSelector(
+    (state) => state.questionReducer
+  );
   const [response, setResponse] = useState([]);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -53,6 +56,7 @@ const QuestionsPage = ({ match }) => {
     <>
       {questions ? (
         <div>
+          {/* <Timer min={parseInt(timeLimit)} timerEnd={() => submitQuiz()} /> */}
           <div className={classes.questionContainer}>
             {questions ? (
               <QuestionCard

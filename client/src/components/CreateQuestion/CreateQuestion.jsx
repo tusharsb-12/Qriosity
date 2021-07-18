@@ -31,12 +31,22 @@ const CreateQuestion = (props) => {
     setQuestion({ ...question, answers });
   };
 
+  const addOptions = (e) => {
+    e.preventDefault();
+    const values = question.answers;
+
+    setQuestion({
+      ...question,
+      answers: [...values, { answerText: '', isCorrect: false }],
+    });
+  };
+
   const onSubmitQuestion = () => {
     props.parentCallback(question, props.id);
   };
 
   return (
-    <div>
+    <div className={classes.createQuestionCard}>
       <textarea
         name='questionText'
         placeholder='Question Text'
@@ -57,6 +67,23 @@ const CreateQuestion = (props) => {
           />
         </div>
       ))}
+      <button onClick={addOptions}>Add option</button>
+      <div className={classes.marksInput}>
+        <input
+          type='number'
+          name='marks'
+          placeholder='Max marks'
+          min={0}
+          onChange={onChange}
+        />
+        <input
+          type='number'
+          name='negativePenalty'
+          placeholder='Negative penalty'
+          min={0}
+          onChange={onChange}
+        />
+      </div>
       <button
         type='button'
         onClick={onSubmitQuestion}

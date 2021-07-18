@@ -36,7 +36,8 @@ const QuizInfo = ({ match }) => {
             </p>
             <br />
             <p>
-              <strong>Author: </strong>Tushar Bauskar
+              <strong>Total marks: </strong>
+              {quizData?.totalMarks}
             </p>
           </div>
           <a href={`/questions/${match.params.quizId}`}>Start Quiz</a>

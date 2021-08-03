@@ -4,6 +4,10 @@
   grid-template-columns: repeat(4, 25%);
 }
 
+.title {
+  font-weight: 500;
+}
+
 @media screen and (max-width: 992px) {
   .mainContainer {
     grid-template-columns: repeat(3, 33%);

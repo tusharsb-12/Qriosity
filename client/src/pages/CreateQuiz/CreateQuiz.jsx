@@ -12,8 +12,6 @@ const CreateQuiz = () => {
     description: 'No description provided',
     instructions: 'No instructions provided',
     timeLimit: '',
-    startDateTime: '',
-    endDateTime: '',
     questions: [],
   });
   const dispatch = useDispatch();
@@ -81,26 +79,6 @@ const CreateQuiz = () => {
         onChange={onChange}
         className={classes.quizInput}
       />
-      <div className={classes.dateDiv}>
-        <label htmlFor='startDateTime'>Start Date and Time</label>
-        <br />
-        <input
-          type='datetime-local'
-          name='startDateTime'
-          onChange={onChange}
-          className={classes.quizDate}
-        />
-      </div>
-      <div className={classes.dateDiv}>
-        <label htmlFor='startDateTime'>End Date and Time</label>
-        <br />
-        <input
-          type='datetime-local'
-          name='endDateTime'
-          onChange={onChange}
-          className={classes.quizDate}
-        />
-      </div>
       {formData.questions.map((question, index) => {
         return (
           <CreateQuestion

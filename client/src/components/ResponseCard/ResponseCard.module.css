@@ -7,15 +7,15 @@
 }
 
 .questionText {
-  font-size: 25px;
+  font-size: 20px;
   font-weight: 400;
-  color: green;
+  color: black;
   margin-bottom: 20px;
 }
 
 .responses {
   padding: 10px 0px;
-  font-size: 20px;
+  font-size: 18px;
   border-radius: 5px;
 }
 

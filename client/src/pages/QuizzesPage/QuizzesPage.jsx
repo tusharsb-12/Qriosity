@@ -40,7 +40,7 @@ const QuizzesPage = ({ match }) => {
     <>
       {quizzes ? (
         <div>
-          <h1>{title}</h1>
+          <h1 className={classes.title}>{title}</h1>
           <div className={classes.mainContainer}>
             {quizzes?.map((quiz, index) => (
               <QuizCard

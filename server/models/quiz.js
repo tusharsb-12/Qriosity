@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-import Question from './question.js';
 
 const quizSchema = new mongoose.Schema({
   title: {
@@ -18,14 +17,6 @@ const quizSchema = new mongoose.Schema({
   },
   timeLimit: {
     type: Number,
-    required: true,
-  },
-  startDateTime: {
-    type: Date,
-    required: true,
-  },
-  endDateTime: {
-    type: Date,
     required: true,
   },
   author: {

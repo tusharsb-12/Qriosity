@@ -1,0 +1,10 @@
+.title {
+  text-align: center;
+  font-weight: 500;
+  margin: 30px;
+}
+
+.chart {
+  width: 100%;
+  height: 500px;
+}

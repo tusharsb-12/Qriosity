@@ -34,7 +34,7 @@ function App() {
                 component={QuestionsPage}
               />
               <PrivateRoute path='/dashboard' exact component={Dashboard} />
-              <PrivateRoute path='/upcoming' exact component={QuizzesPage} />
+              <PrivateRoute path='/all' exact component={QuizzesPage} />
               <PrivateRoute path='/attempted' exact component={QuizzesPage} />
               <PrivateRoute path='/created' exact component={QuizzesPage} />
               {/* <PrivateRoute path='/statistics' exact component={QuizzesPage} /> */}

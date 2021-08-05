@@ -6,7 +6,6 @@ import { submitQuizResponse } from '../../redux/actions/quiz';
 
 import QuestionCard from '../../components/QuestionCard/QuestionCard';
 import Loading from '../../components/Loading/Loading';
-import Timer from '../../components/Timer/Timer';
 
 import classes from './QuestionsPage.module.css';
 
@@ -52,11 +51,40 @@ const QuestionsPage = ({ match }) => {
     dispatch(submitQuizResponse({ quizId, response }, history));
   };
 
+  const Timer = () => {
+    const [[minutes, seconds], setTime] = useState([timeLimit, 0]);
+
+    const tick = () => {
+      if (minutes === 0 && seconds === 0) {
+        submitQuiz();
+      } else if (seconds === 0) {
+        setTime([minutes - 1, 59]);
+      } else {
+        setTime([minutes, seconds - 1]);
+      }
+    };
+
+    useEffect(() => {
+      const timerId = setInterval(() => tick(), 1000);
+      return () => clearInterval(timerId);
+    });
+
+    return (
+      <div>
+        <div className={classes.timer}>
+          {`${minutes.toString().padStart(2, '0')} : ${seconds
+            .toString()
+            .padStart(2, '0')}`}
+        </div>
+      </div>
+    );
+  };
+
   return (
     <>
       {questions ? (
         <div>
-          {/* <Timer min={parseInt(timeLimit)} timerEnd={() => submitQuiz()} /> */}
+          <Timer />
           <div className={classes.questionContainer}>
             {questions ? (
               <QuestionCard

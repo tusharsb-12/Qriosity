@@ -18,8 +18,8 @@ const QuizzesPage = ({ match }) => {
 
   useEffect(() => {
     switch (match.url) {
-      case '/upcoming':
-        setTitle('Upcoming quizzes');
+      case '/all':
+        setTitle('All quizzes');
         dispatch(getAllQuizzes());
         break;
       case '/created':
@@ -33,7 +33,6 @@ const QuizzesPage = ({ match }) => {
       default:
         break;
     }
-    // dispatch(getAllQuizzes());
   }, []);
 
   return (

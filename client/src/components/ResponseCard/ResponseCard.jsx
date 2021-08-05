@@ -3,10 +3,12 @@ import cn from 'classnames';
 
 import classes from './ResponseCard.module.css';
 
-const ResponseCard = ({ res }) => {
+const ResponseCard = ({ res, number }) => {
   return (
     <div className={classes.responseCard}>
-      <p className={classes.questionText}>{res.questionText}</p>
+      <p className={classes.questionText}>
+        Q{number}. {res.questionText}
+      </p>
       {res.answers.map(({ answerText, isCorrect, isSelected }, index) => (
         <div
           key={index}

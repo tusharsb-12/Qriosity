@@ -78,8 +78,12 @@ export const submitQuizResponse =
     try {
       // Calculate score
       const { response } = quizResponse;
-      const score = calculateScore(response);
-      const { data } = await api.saveResponse({ ...quizResponse, score });
+      const { score, correctQuestions } = calculateScore(response);
+      const { data } = await api.saveResponse({
+        ...quizResponse,
+        score,
+        correctQuestions,
+      });
       dispatch({ type: QUIZ_SUBMIT_SUCCESS, payload: data });
       history.push('/score');
     } catch (err) {

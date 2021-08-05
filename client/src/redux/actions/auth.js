@@ -6,6 +6,8 @@ import {
   LOGIN_FAIL,
   GET_USER_SUCCESS,
   GET_USER_FAIL,
+  LOGOUT_SUCCESS,
+  LOGOUT_FAIL,
 } from '../constants';
 
 export const register = (formData, history) => async (dispatch) => {
@@ -37,5 +39,14 @@ export const getUser = () => async (dispatch) => {
   } catch (err) {
     const { data } = err.response;
     dispatch({ type: GET_USER_FAIL, payload: data });
+  }
+};
+
+export const logout = () => async (dispatch, history) => {
+  try {
+    history.push('/');
+    dispatch({ type: LOGOUT_SUCCESS, payload: 'Logout success' });
+  } catch (err) {
+    dispatch({ type: LOGOUT_FAIL, payload: '' });
   }
 };

@@ -24,6 +24,7 @@ const quizResponseSchema = new mongoose.Schema({
     },
   ],
   score: Number,
+  correctQuestions: Number,
   totalMarks: Number,
 });
 

@@ -1,4 +1,9 @@
-import { LOGIN_SUCCESS, LOGIN_FAIL } from '../constants';
+import {
+  LOGIN_SUCCESS,
+  LOGIN_FAIL,
+  LOGOUT_SUCCESS,
+  LOGOUT_FAIL,
+} from '../constants';
 
 const loginReducer = (loginState = {}, action) => {
   switch (action.type) {
@@ -7,6 +12,11 @@ const loginReducer = (loginState = {}, action) => {
       return action.payload;
     case LOGIN_FAIL:
       return action.payload.err;
+    case LOGOUT_SUCCESS:
+      localStorage.removeItem('userToken');
+      return action.payload;
+    case LOGOUT_FAIL:
+      return {};
     default:
       return loginState;
   }

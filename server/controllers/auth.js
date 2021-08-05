@@ -82,11 +82,6 @@ export const register = async (req, res) => {
   }
 };
 
-// Logout user
-export const logout = (req, res) => {
-  return res.status(200).json({ msg: 'Logged out' });
-};
-
 // Get user
 export const getUser = async (req, res) => {
   try {

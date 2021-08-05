@@ -1,4 +1,5 @@
-.score {
+.score,
+.responses {
   font-weight: 400;
   font-size: 40px;
   margin-bottom: 30px;

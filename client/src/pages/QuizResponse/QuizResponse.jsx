@@ -5,6 +5,7 @@ import { getQuizResponse } from '../../redux/actions/quiz';
 import ResponseCard from '../../components/ResponseCard/ResponseCard';
 import Loading from '../../components/Loading/Loading';
 import classes from './QuizResponse.module.css';
+import PieChart from '../../components/Chart/PieChart';
 
 const QuizResponse = ({ match }) => {
   const dispatch = useDispatch();
@@ -23,8 +24,16 @@ const QuizResponse = ({ match }) => {
           <h1 className={classes.score}>
             Your score: {`${quizResponse?.score} / ${quizResponse?.totalMarks}`}
           </h1>
+          <PieChart
+            correct={quizResponse.correctQuestions}
+            total={quizResponse.response.length}
+          />
+          <br />
+          <hr />
+          <br />
+          <h1 className={classes.responses}>Responses</h1>
           {quizResponse?.response.map((res, index) => (
-            <ResponseCard res={res} key={index} />
+            <ResponseCard res={res} key={index} number={index + 1} />
           ))}
         </div>
       ) : (
